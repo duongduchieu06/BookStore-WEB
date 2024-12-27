@@ -12,8 +12,8 @@ namespace LibraryCore.UnitOfWork
     {
         public bool SendEmail(string toEmail, string subject, string mess)
         {
-            var FromEmail = "linhtkhe173474@fpt.edu.vn";
-            var pass = "hqvx uylj pzjx ytjc";
+            var FromEmail = "duonghieuyp06@gmail.com";
+            var pass = "hjaq xpwy lzjs hdhk";
 
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse(FromEmail));
@@ -23,7 +23,7 @@ namespace LibraryCore.UnitOfWork
             email.Body = new TextPart(TextFormat.Html) { Text = mess };
 
             using var smtp = new SmtpClient();
-            smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+            smtp.Connect("smtp.gmail.com", 465, SecureSocketOptions.SslOnConnect);
             smtp.Authenticate(FromEmail, pass);
 
             // Check if the `toEmail` address is valid before sending the email
